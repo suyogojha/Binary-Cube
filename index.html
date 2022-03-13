@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+          <link rel="stylesheet" href="style.css" />
+
+    </head>
+    <body>
+    <section id="container"></section>
+    <!-- INSPIRED BY QWERTY'S PROFILE PIC -->
+        <script>
+        //Polyfill for unsupported devices
+        if (!String.prototype.repeat) {
+        alert("Your device didnt support String.prototype.repeat()\nA polyfill was used.")
+     String.prototype.repeat = function(count) { 
+     'use strict'; 
+      if (this == null) {
+           throw new TypeError('can\'t convert ' + this + ' to object'); 
+      }
+      var str = '' + this; 
+      count = +count; 
+      if (count != count) { count = 0; } 
+      if (count < 0) { throw new RangeError('repeat count must be non-negative'); }
+      if (count == Infinity) { throw new RangeError('repeat count must be less than infinity'); }
+      count = Math.floor(count); if (str.length == 0 || count == 0) { return ''; } 
+      // Ensuring count is a 31-bit integer allows us to heavily optimize the
+      // main part. But anyway, most current (August 2014) browsers can't handle
+      // strings 1 << 28 chars or longer, so: 
+      if (str.length * count >= 1 << 28) { throw new RangeError('repeat count must not overflow maximum string size'); }
+      var rpt = ''; 
+      for (var i = 0; i < count; i++) { rpt += str; }
+      return rpt; } }
+            var n=5
+            var body=document.getElementById('container')
+            for(x=0;x<=n;x++){
+                div=document.createElement("div")
+                div.style.transform="rotateX(90deg) translateZ("+((x*-40)+100)+"px) translateY(-100px) translateX(0px)"
+                div.innerHTML="01010011<wbr/>10001010<wbr>10111001<wbr>010000101<wbr>110110010<wbr/>1011011001<wbr/>101110010<wbr>101101001<wbr>0100110001<wbr>".repeat(15)
+                //div.style.background="red"
+                body.appendChild(div)
+            }
+             for(y=0;y<=n;y++){
+                div=document.createElement("div")
+                div.style.transform="rotateY(90deg) translateZ("+((y*-40)+100)+"px) translateX(100px) translateY(0px)"
+                div.innerHTML="01010011<wbr/>10001010<wbr>10111001<wbr>010000101<wbr>110110010<wbr/>1011011001<wbr/>101110010<wbr>101101001<wbr>0100110001<wbr>".repeat(15)
+               // div.style.background="green"
+                body.appendChild(div)
+            }
+            for(z=0;z<=n;z++){
+                div=document.createElement("div")
+                div.style.transform="translateZ("+((z*-40))+"px)"
+                div.innerHTML="01010011<wbr/>10001010<wbr>10111001<wbr>010000101<wbr>110110010<wbr/>1011011001<wbr/>101110010<wbr>101101001<wbr>0100110001<wbr>".repeat(15)
+                body.appendChild(div)
+            }
+        </script>
+    </body>
+</html>
